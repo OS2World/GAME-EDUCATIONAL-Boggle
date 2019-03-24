@@ -1,0 +1,13 @@
+DLGTEMPLATE DLG_BOX LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Boggle Options", DLG_BOX, 78, 76, 142, 52, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        ENTRYFIELD      "", sle_timerduration, 97, 39, 32, 8, ES_RIGHT | 
+                        ES_MARGIN | ES_AUTOTAB | WS_GROUP
+        LTEXT           "Timer Length (secs):", st_timerduration, 7, 37, 88, 
+                        8, NOT WS_GROUP
+        DEFPUSHBUTTON      "~Ok", DID_OK, 46, 5, 40, 14
+        AUTOCHECKBOX    "~Sound", cb_sound, 7, 24, 40, 10
+    END
+END

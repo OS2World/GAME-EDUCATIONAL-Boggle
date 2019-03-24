@@ -1,0 +1,23 @@
+DLGTEMPLATE dlg_about LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About Boggle", dlg_about, 69, 58, 191, 70, NOT FS_DLGBORDER | 
+            FS_SIZEBORDER | WS_VISIBLE | WS_SYNCPAINT, FCF_SYSMENU | 
+            FCF_TITLEBAR
+    BEGIN
+        ICON            WND_MAINWIN, 400, 3, 42, 36, 28, WS_GROUP
+        CTEXT           "Boggle Game", st_title, 38, 51, 110, 16, DT_VCENTER | 
+                        NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "23.Times New Roman"
+        CTEXT           "Version 1.0", st_version, 65, 42, 57, 10, 
+                        DT_VCENTER | NOT WS_GROUP
+        CTEXT           "Bou Software Systems 1996", st_company, 19, 28, 155, 
+                        10, DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        CTEXT           "David Boudah", st_name, 50, 17, 92, 10, DT_VCENTER | 
+                        NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        CTEXT           "All rights reserved", st_reserved, 49, 10, 94, 9, 
+                        DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

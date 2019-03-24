@@ -1,0 +1,70 @@
+#include <os2.h>      /* for PM constants */
+#include "menu.hpp"
+#include "options.h"
+#include "about.h"
+
+ICON WND_MAINWIN              CAT.ICO
+BITMAP  ID_BLANK  LOADONCALL  blank.bmp
+
+MENU WND_MAINWIN
+{                          
+   SUBMENU "~Game", IDM_GAME, MIS_TEXT
+   {
+      MENUITEM "~New\tCtrl+N", IDM_GAME_NEW, MIS_TEXT
+      MENUITEM "~Stop Game\tCtrl+Q", IDM_STOP_GAME, MIS_TEXT
+      MENUITEM "~Pause Game\tCtrl+P", IDM_PAUSE_GAME, MIS_TEXT
+      MENUITEM "~Resume Game\tCtrl+R", IDM_RESUME_GAME, MIS_TEXT
+      MENUITEM SEPARATOR
+      MENUITEM "E~xit\tF3", IDM_GAME_EXIT, MIS_TEXT
+   }
+   SUBMENU "~Options", IDM_OPTIONS, MIS_TEXT
+   {
+      MENUITEM "~Settings\tCtrl+S", IDM_SETTINGS, MIS_TEXT
+      MENUITEM "~Find All\tCtrl+F", IDM_FIND_ALL, MIS_TEXT
+   }
+  SUBMENU  "~Help", IDM_HELP, MIS_TEXT
+  {
+    MENUITEM "~Contents\tF1", IDM_HELP_CONTENTS, MIS_TEXT
+//    MENUITEM "~Help for this window\tShift+F1", IDM_HELP_FOR_THIS_WINDOW, MIS_TEXT
+//    MENUITEM "~Search for help on...", IDM_SEARCH_FOR_HELP_ON, MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~About...", IDM_HELP_ABOUT, MIS_TEXT
+  }
+}
+
+ACCELTABLE WND_MAINWIN
+{  
+    VK_F1, IDM_HELP_CONTENTS, VIRTUALKEY
+    VK_F3, IDM_GAME_EXIT, VIRTUALKEY
+   "N", IDM_GAME_NEW, CONTROL
+   "n", IDM_GAME_NEW, CONTROL
+   "Q", IDM_STOP_GAME, CONTROL
+   "q", IDM_STOP_GAME, CONTROL
+   "P", IDM_PAUSE_GAME, CONTROL
+   "p", IDM_PAUSE_GAME, CONTROL
+   "R", IDM_RESUME_GAME, CONTROL
+   "r", IDM_RESUME_GAME, CONTROL
+   "F", IDM_FIND_ALL, CONTROL
+   "f", IDM_FIND_ALL, CONTROL
+   "S", IDM_SETTINGS, CONTROL
+   "s", IDM_SETTINGS, CONTROL
+}
+
+HELPTABLE HLP_BOGGLEAPP
+BEGIN
+    // Window ID            Sub Table ID         IPF Extended Help ID
+    HELPITEM WND_MAINWIN, HLP_MAINWIN, HLP_MAINWIN
+END
+
+HELPSUBTABLE HLP_MAINWIN
+BEGIN
+    HELPSUBITEM sle_timerduration, 201
+END
+
+STRINGTABLE LOADONCALL
+BEGIN
+    WND_MAINWIN, "Boggle Game for OS/2"
+END                         
+
+rcinclude options.dlg 
+rcinclude about.dlg  
