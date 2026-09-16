@@ -5,7 +5,8 @@ The Boggle computer game is based on the board game of the same name. The game c
 * GNU GPL V2
 
 ## COMPILE TOOLS
-* 
+* icc
+* IBM Open Class (IOC) framework
  
 ## AUTHORS
 * David Boudah
