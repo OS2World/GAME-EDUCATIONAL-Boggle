@@ -1,0 +1,59 @@
+BOGGLE for OS/2 - Changelog
+===========================
+
+1.1 (2026-09-16, updated 2026-09-22)
+- From-scratch port of the original IBM Open Class C++ Boggle game
+  to plain C / Presentation Manager, built with Open Watcom.
+- Removed the IBM Open Class class library dependency; the game is a
+  self-contained PM application.
+- Sound playback re-implemented with the OS/2 MCI string interface
+  (waveaudio) instead of the open class IMMWaveAudio object.
+- Language support for six UI languages: English, Espanol, Nederlands,
+  Deutsch, Francais and Italiano.  Menu text, labels, and dialogs all
+  switch at run time.  Choice persists across sessions.
+- Options - Settings dialog (timer length, sound on/off) restored.
+- Menu and keyboard accelerators mapped per the OS/2 games
+  standardization plan (Ctrl+N/P/Q/X/B/F).
+- Added POINTER-sized application icon (BOGGLE.ICO) and an About
+  dialog.
+- Added a BLDLEVEL signature to the executable for bldlevel.exe.
+
+Visual improvements (2026-09-22):
+- Window enlarged to 880x660 client area for better readability.
+- Dark gray background with white labels throughout.
+- Letter dice now rendered with a 3D raised-bevel effect.
+- Die letters drawn in Swiss Bold Italic font, centered in each cell.
+- OS/2 system font (PM_SystemFonts/WindowText from OS2.INI) applied
+  to all controls automatically.
+- Timer label shows remaining seconds: "Timer: xx sec".
+
+Gameplay:
+- Submit button (">" square button) added to the right of the
+  Word in Progress field as an alternative to right-clicking.
+
+Help system:
+- IPF help files written in all six supported languages (EN, ES, NL,
+  DE, FR, IT) and compiled with wipfc into bin\help\boggle_XX.hlp.
+- Help > Help Contents menu item and F1 key open the help viewer in
+  the currently active language.
+- Help language switches automatically when the UI language changes.
+
+Runtime file layout:
+- Sound files (.wav) are now loaded from a sound\ subdirectory next
+  to BOGGLE.EXE (previously the working directory).
+- Dictionary files (index, words) and settings (BOGGLE.CFG) are now
+  stored in a data\ subdirectory next to BOGGLE.EXE.
+- Help files (.hlp) are placed in a help\ subdirectory next to
+  BOGGLE.EXE by the build system.
+- All paths are resolved at run time via DosQueryModuleName so the
+  game works regardless of the working directory when launched.
+
+Note on multilingual word validation:
+- The dictionary (index + words) contains English words only.  The
+  UI language selection changes menus and labels but word validation
+  always uses the English dictionary.  This is by design: adding full
+  language-specific word lists is a future enhancement.
+
+1.0 (1996, original release)
+- Original Boggle game for OS/2 by Bou Software Systems / David
+  Boudah, built with IBM Open Class C++.

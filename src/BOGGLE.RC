@@ -1,0 +1,106 @@
+#include "boggle.h"
+
+ICON        WND_MAINWIN "BOGGLE.ICO"
+
+MENU        WND_MAINWIN
+BEGIN
+    SUBMENU "~Game", IDM_SUBMENU_GAME
+    BEGIN
+        MENUITEM "~New Game\tCtrl+N", IDM_NEW
+        MENUITEM "~Find All Words", IDM_FIND_ALL
+        MENUITEM "~Pause Game\tCtrl+P", IDM_PAUSE, MIA_CHECKED
+        MENUITEM "~Quit Game\tCtrl+Q", IDM_QUIT
+        MENUITEM SEPARATOR
+        MENUITEM "E~xit\tCtrl+X", IDM_EXIT
+    END
+
+    SUBMENU "~Options", IDM_SUBMENU_OPTIONS
+    BEGIN
+        SUBMENU "~Detail", IDM_SUBMENU_DETAIL
+        BEGIN
+            MENUITEM "~High", IDM_HIGHDET, MIA_CHECKED
+            MENUITEM "~Medium", IDM_MEDIUMDET
+            MENUITEM "~Low", IDM_LOWDET
+        END
+
+        MENUITEM SEPARATOR
+
+        SUBMENU "~Language", IDM_SUBMENU_LANG
+        BEGIN
+            MENUITEM "English", IDM_LANG_EN, MIA_CHECKED
+            MENUITEM "Espanol", IDM_LANG_ES
+            MENUITEM "Nederlands", IDM_LANG_NL
+            MENUITEM "Deutsch", IDM_LANG_DE
+            MENUITEM "Francais", IDM_LANG_FR
+            MENUITEM "Italiano", IDM_LANG_IT
+        END
+
+        MENUITEM SEPARATOR
+
+        MENUITEM "~Save settings on exit", IDM_SAVEONEXIT, MIA_CHECKED
+
+        MENUITEM SEPARATOR
+
+        MENUITEM "~Background Run\tCtrl+B", IDM_BACKGRND
+        MENUITEM "~Frame Controls\tCtrl+F", IDM_FRAME, MIA_CHECKED
+
+        MENUITEM SEPARATOR
+
+        MENUITEM "~Settings...", IDM_SETTINGS
+    END
+
+    SUBMENU "~Help", IDM_SUBMENU_HELP
+    BEGIN
+        MENUITEM "~Help Contents\tF1", IDM_HELP
+        MENUITEM SEPARATOR
+        MENUITEM "~About Boggle...", IDM_HELP_ABOUT
+    END
+END
+
+ACCELTABLE WND_MAINWIN
+BEGIN
+    "n", IDM_NEW,      CONTROL
+    "p", IDM_PAUSE,    CONTROL
+    "q", IDM_QUIT,     CONTROL
+    "x", IDM_EXIT,     CONTROL
+    "b", IDM_BACKGRND, CONTROL
+    "f", IDM_FRAME,    CONTROL
+    VK_F1, IDM_HELP,   VIRTUALKEY
+END
+
+DLGTEMPLATE IDD_OPTIONS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Boggle Options", IDD_OPTIONS, 78, 76, 142, 52, WS_VISIBLE,
+            FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ENTRYFIELD      "", IDD_TIMERLEN, 97, 39, 32, 8, ES_RIGHT |
+                        ES_MARGIN | ES_AUTOTAB | WS_GROUP
+        LTEXT           "Timer Length (secs):", IDC_ST_TLEN, 7, 37, 88,
+                        8, NOT WS_GROUP
+        DEFPUSHBUTTON   "~Ok", DID_OK, 46, 5, 40, 14
+        AUTOCHECKBOX    "~Sound", IDD_SOUND, 7, 24, 40, 10
+    END
+END
+
+DLGTEMPLATE IDD_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About Boggle", IDD_ABOUT, 50, 50, 200, 112, WS_VISIBLE,
+            FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ICON            WND_MAINWIN, IDC_AB_ICON, 8, 80, 30, 30, WS_GROUP
+        CTEXT           "Boggle for OS/2", IDC_AB_TITLE, 45, 94, 150, 16,
+                        DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "16.Helv"
+        CTEXT           "Version 1.1", IDC_AB_VERSION, 45, 82, 150, 10,
+                        DT_VCENTER | NOT WS_GROUP
+        CTEXT           "OpenWatcom Release", IDC_AB_RELEASE, 45, 70, 150,
+                        10, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "(c) 1996, David Boudah", IDC_AB_COPY1, 45, 56,
+                        150, 10, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "(c) 2026, OS2World", IDC_AB_COPY2, 45, 44, 150,
+                        10, DT_VCENTER | NOT WS_GROUP
+        CTEXT           "GNU GPL V2", IDC_AB_LICENSE, 45, 32, 150, 10,
+                        DT_VCENTER | NOT WS_GROUP
+        DEFPUSHBUTTON   "~Close", DID_OK, 76, 8, 48, 16
+    END
+END
