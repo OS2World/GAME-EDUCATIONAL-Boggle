@@ -1,4 +1,4 @@
-# Game-Boggle
+# GAME-EDUCATIONAL-Boggle
 
 Boggle for OS/2, version 1.1
 
